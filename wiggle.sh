@@ -1,15 +1,14 @@
 #!/bin/bash
 
-export PYTHONROOT="/Users/stirls/lib/python/file_manipulation"
+export PYTHONROOT="/Users/jsh/proj/churchman_align"
 echo "Finding python directory ${PYTHONROOT}"
 
 
-ARRAY2=( 'mRNA_WT' 'IP_WT')
+ARRAY2=( 'WT_NT')
 
-ARRAY=( 's_1_align1.txt,s_1_align2.txt,s_2_align1.txt,s_2_align2.txt,s_3_align1.txt,s_3_align2.txt,../../../091007/Alignment/100225/s_5_align1.txt,../../../091007/Alignment/100225/s_5_align2.txt' \
-'s_7_align1.txt,s_7_align2.txt,s_6_align1.txt,s_6_align2.txt,s_5_align1.txt,s_5_align2.txt,s_4_align1.txt,s_4_align2.txt,../../../091007/Alignment/100225/s_6_align1.txt,../../../091007/Alignment/100225/s_6_align2.txt')
+ARRAY=( 'WT_NT1.align1.txt,WT_NT2.align1.txt,WT_NT3.align1.txt,WT_NT4.align1.txt,WT_NT5.align1.txt,WT_NT1.align2.txt,WT_NT2.align2.txt,WT_NT3.align2.txt,WT_NT4.align2.txt,WT_NT5.align2.txt')
 
-ARRAY3=( 0 0)
+ARRAY3=( 0)
 # get number of elements in the array
 ELEMENTS=${#ARRAY[@]}
 cp ${PYTHONROOT}/bowtie_align_wiggle.py .

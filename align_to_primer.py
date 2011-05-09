@@ -32,20 +32,20 @@ def main(argv=None):
     try:
         optlist, args = getopt(argv[1:], "hs:l:o:r:")
     except:
-        print ""
-        print HELP_STRING
+        print("")
+        print(HELP_STRING)
         sys.exit(1)
 
     if len(optlist) == 0:
-        print ""
-        print HELP_STRING
+        print("")
+        print(HELP_STRING)
         sys.exit(1)
 
     for (opt, opt_arg) in optlist:
 
         if opt == '-h':
-            print ""
-            print HELP_STRING
+            print("")
+            print(HELP_STRING)
             sys.exit(1)
         elif opt == '-s':
             sequenceFile = opt_arg
@@ -57,20 +57,20 @@ def main(argv=None):
             origFile = opt_arg
 
     if sequenceFile == "":
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
     if libFile == "":
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
     if outFile == "":
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
     if origFile == "":
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
 
     # read in RT primer
-    libFile = file(libFile, 'r')
+    libFile = open(libFile, 'r')
     primer = libFile.readline()
     primer_length = len(primer)
     min_primer_match = 10
@@ -78,7 +78,7 @@ def main(argv=None):
     min_insert_size = 18
     seed_length = 25
     seqInfo =[]
-    seqFile = file(sequenceFile,'r')
+    seqFile = open(sequenceFile,'r')
     for i in range(4):
         seqInfo.append(seqFile.readline())
 
@@ -90,7 +90,7 @@ def main(argv=None):
     while seqInfo[0] != '' :
 
         if line_num%100000==0:
-            print line_num
+            print(line_num)
         line = seqInfo[1]
         s = difflib.SequenceMatcher(None, line, primer)
         alignment = s.find_longest_match(0, len(line)-1, 0, primer_length-1)

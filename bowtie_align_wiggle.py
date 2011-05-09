@@ -36,22 +36,22 @@ def main(argv=None):
     try:
         optlist, args = getopt(argv[1:], "hf:o:m:")
     except:
-        print ""
-        print HELP_STRING
+        print("")
+        print(HELP_STRING)
         sys.exit(1)
 
     if len(optlist) == 0:
 
-        print ""
-        print HELP_STRING
+        print("")
+        print(HELP_STRING)
         sys.exit(1)
 
     for (opt, opt_arg) in optlist:
         #print opt
         #print opt_arg
         if opt == '-h':
-            print ""
-            print HELP_STRING
+            print("")
+            print(HELP_STRING)
             sys.exit(1)
        # elif opt == '-n':
         #    number_files = opt_arg
@@ -66,11 +66,11 @@ def main(argv=None):
             sj_on = int(opt_arg)
 
     if inputFiles == "" or outputFile == "" :
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
 
 
-    print inputFiles
+    print(inputFiles)
     chr = {1:'chrI', 2:'chrII', 3:'chrIII', 4:'chrIV', 5:'chrV', 6:'chrVI', 7:'chrVII', 8:'chrVIII', 9:'chrIX', 10:'chrX',
            11:'chrXI', 12:'chrXII', 13:'chrXIII', 14:'chrXIV', 15:'chrXV', 16:'chrXVI', 17:'chrMito', 18:'2-micron'}
 
@@ -78,14 +78,14 @@ def main(argv=None):
     position_sum2 = {}
     totalReads=0
 
-    print "sj_on is %s" % sj_on
+    print("sj_on is %s" % sj_on)
 
     for inputFile in inputFiles:
-        print inputFile
+        print(inputFile)
         seqAlignments = {}
         for i,line in enumerate(open(inputFile)):
             if i%500000==0:
-                print i
+                print(i)
             fields = line.split('\t')
             if fields[0] in seqAlignments:
                 seqAlignments[fields[0]].append(fields)
@@ -164,7 +164,7 @@ def main(argv=None):
             outFile1.write('variableStep chrom=%s' % chromosome)
             outFile1.write('\n')
             loc_dic = position_sum1[chromosome]
-            locations = loc_dic.keys()
+            locations = list(loc_dic.keys())
             locations.sort()
             for l in locations:
                 outFile1.write('%s %s' % (l, loc_dic[l]))
@@ -172,7 +172,7 @@ def main(argv=None):
             outFile2.write('variableStep chrom=%s' % chromosome)
             outFile2.write('\n')
             loc_dic = position_sum2[chromosome]
-            locations = loc_dic.keys()
+            locations = list(loc_dic.keys())
             locations.sort()
             for l in locations:
                 outFile2.write('%s %s' % (l, loc_dic[l]))
@@ -198,7 +198,7 @@ def main(argv=None):
             outFile1.write('variableStep chrom=%s' % chromosome)
             outFile1.write('\n')
             loc_dic = position_sum1[chromosome]
-            locations = loc_dic.keys()
+            locations = list(loc_dic.keys())
             locations.sort()
             for l in locations:
                 outFile1.write('%s %s' % (l, normFactor*float(loc_dic[l])/totalReads))
@@ -206,7 +206,7 @@ def main(argv=None):
             outFile2.write('variableStep chrom=%s' % chromosome)
             outFile2.write('\n')
             loc_dic = position_sum2[chromosome]
-            locations = loc_dic.keys()
+            locations = list(loc_dic.keys())
             locations.sort()
             for l in locations:
                 outFile2.write('%s %s' % (l, normFactor*float(loc_dic[l])/totalReads))
@@ -223,7 +223,7 @@ def main(argv=None):
     outFile2= open(filename, 'w')
     chr_seek1=[]
     chr_seek2=[]
-    chrSizeFile= '/Users/stirls/lib/python/gffs/chrSize.txt'
+    chrSizeFile= '/Users/jsh/proj/churchman_align/chrSize.txt'
     chrSize = {}
     for line in open(chrSizeFile):
         fields=line.replace('\n','').split('\t')

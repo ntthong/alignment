@@ -27,15 +27,15 @@ def main(argv=None):
     try:
         optlist, args = getopt(argv[1:], "ht:f:")
     except:
-        print ""
-        print HELP_STRING
+        print("")
+        print(HELP_STRING)
         sys.exit(1)
 
 
     for (opt, opt_arg) in optlist:
         if opt == '-h':
-            print ""
-            print HELP_STRING
+            print("")
+            print(HELP_STRING)
             sys.exit(1)
         elif opt == '-f':
             trackFilename=opt_arg
@@ -44,7 +44,7 @@ def main(argv=None):
 
 
     if TSSFilename == "" or trackFilename == "":
-        print HELP_STRING
+        print(HELP_STRING)
         sys.exit(1)
 
 #    TSSFile = open(TSSFilename, 'r')
@@ -61,7 +61,7 @@ def main(argv=None):
     for i,line in enumerate(open(TSSFilename)):
         if line[0]=='S':continue
         if i%100==0:
-            print i
+            print(i)
         fields = line.replace('\n','').split('\t')
         if fields[3]=='+':
             name = fields[4]
@@ -143,10 +143,10 @@ def main(argv=None):
                         line1=trackFile1.readline()
 
                     chr1=line1.replace('\n','').split('=')
-                    print chr1
+                    print(chr1)
                     chr1=chr1[1]
                     lineNum1 = 0
-                    print chr1
+                    print(chr1)
                 while lineNum1<start-1:
                     line1=trackFile1.readline()
                     lineNum1+=1
